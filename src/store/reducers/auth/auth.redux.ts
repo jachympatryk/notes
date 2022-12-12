@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User } from "firebase/auth";
 
 interface UserData {
-  user: unknown | null;
+  user: User | null;
 }
 
 interface TokenData {
@@ -23,7 +24,7 @@ const auth = createSlice({
       state.user = null;
       state.token = null;
     },
-    setUser: (state, action: PayloadAction<unknown>) => {
+    setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
     setToken: (state, action: PayloadAction<string | null>) => {

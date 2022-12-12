@@ -1,5 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
+// eslint-disable-next-line import/default
+import auth from "./reducers/auth";
+
 const reducer = combineReducers({
   auth,
 });
