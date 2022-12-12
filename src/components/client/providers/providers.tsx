@@ -8,7 +8,7 @@ import { store } from "store";
 export const Providers: React.FC<ProviderProps> = ({ children }) => {
   return (
     <Provider store={store}>
-      <BrowserRouter>{children}</BrowserRouter>;
+      <BrowserRouter>{children}</BrowserRouter>
     </Provider>
   );
 };
