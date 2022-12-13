@@ -7,6 +7,7 @@ import { signInWithPopup } from "firebase/auth";
 import { RootState, setDarkTheme, setLightTheme, setUser } from "store";
 import { auth, googleAuthProvider } from "config";
 import { ui as uiData } from "constants/ui.constants";
+import { NOTES_PAGE } from "../../../constants/routes.constants";
 
 import { ReactComponent as GmailLogo } from "assets/icons/gmail.svg";
 import { ReactComponent as Sun } from "assets/icons/sun.svg";
@@ -51,7 +52,7 @@ export const Navigation = () => {
     <div className={styles.container}>
       {showLinks && (
         <>
-          <Link className={styles.link} to="/">
+          <Link className={styles.link} to={NOTES_PAGE.path}>
             notes
           </Link>
           <Link className={styles.link} to="/">

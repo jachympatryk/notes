@@ -14,7 +14,7 @@ export const Page: React.FC<PageProps> = ({ children }) => {
   return (
     <div className={styles.container} style={{ backgroundColor: theme }}>
       <Navigation />
-      <div>{children}</div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };

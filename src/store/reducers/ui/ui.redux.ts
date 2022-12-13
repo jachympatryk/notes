@@ -7,7 +7,7 @@ interface UiData {
 }
 
 const initialState: UiData = {
-  theme: uiData.light,
+  theme: uiData.dark,
 };
 
 const ui = createSlice({

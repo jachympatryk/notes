@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { initializeFirestore, collection, CollectionReference } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbM-G2mm8vQWfBRhc3AUWph9N0qPnmDCM",
@@ -11,6 +12,15 @@ const firebaseConfig = {
   measurementId: "G-6Q1FS51VCF",
 };
 
+export const firestoreCollections = {
+  notes: "notes",
+};
+
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleAuthProvider = new GoogleAuthProvider();
+export const firestore = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+});
+export const getCollectionRef = <D>(collectionName: string) =>
+  collection(firestore, collectionName) as CollectionReference<D>;
