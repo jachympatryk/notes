@@ -3,13 +3,13 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { initializeFirestore, collection, CollectionReference } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCbM-G2mm8vQWfBRhc3AUWph9N0qPnmDCM",
-  authDomain: "blog-b2ebe.firebaseapp.com",
-  projectId: "blog-b2ebe",
-  storageBucket: "blog-b2ebe.appspot.com",
-  messagingSenderId: "535745455734",
-  appId: "1:535745455734:web:de371a608a254daba8a157",
-  measurementId: "G-6Q1FS51VCF",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 export const firestoreCollections = {

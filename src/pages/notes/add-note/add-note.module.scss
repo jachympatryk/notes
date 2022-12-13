@@ -67,8 +67,8 @@
 }
 
 .fieldsWrapper {
-  display: grid ;
-  grid-template-rows: 100px 400px;
+  display: grid;
+  grid-template-rows: 60px 400px 50px;
   transition: background-color 0.3s;
   border-radius: 16px;
   overflow: hidden;
@@ -80,5 +80,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,0,0,.7);
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.submitButton {
+  width: 150px !important;
+  height: 40px !important;
+  align-self: center !important;
+  border: 3px solid #fff !important;
+  text-transform: uppercase !important;
+  font-family: 'Montserrat' !important;
+  font-weight: bold !important;
+  margin: 0 auto 20px !important;
+  background-color: #ff6a00 !important;
+  color: #fff !important;
+  border-radius: 16px !important;
 }

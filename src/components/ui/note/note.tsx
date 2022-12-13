@@ -3,6 +3,7 @@ import { IconButton, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
 import classNames from "classnames";
+import { useSnackbar } from "notistack";
 
 import { NoteModels } from "models";
 import { notesCategories } from "pages/notes/notes.constants";
@@ -14,14 +15,16 @@ import styles from "./note.module.scss";
 export const Note: React.FC<{ note: NoteModels }> = ({ note }) => {
   const dispatch = useDispatch();
 
+  const { enqueueSnackbar } = useSnackbar();
   const { content, category, important, title, id } = note;
 
   const handleDeleteNote = async (idToDelete: string) => {
     try {
       await deleteNote(idToDelete);
+      enqueueSnackbar("Note deleted successfully", { variant: "success" });
       dispatch(refreshNotes());
     } catch (err) {
-      // TODO add snackbar
+      enqueueSnackbar("error", { variant: "error" });
       // eslint-disable-next-line no-console
       console.log(err);
     }

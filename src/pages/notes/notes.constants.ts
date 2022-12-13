@@ -6,15 +6,15 @@ export const notesCategories: NotesCategoryData[] = [
     color: "#49EB1D",
   },
   {
-    category: "other",
-    color: "#CEE111",
-  },
-  {
     category: "study",
     color: "#E81919",
   },
   {
     category: "work",
     color: "#1D4FEB",
+  },
+  {
+    category: "other",
+    color: "#CEE111",
   },
 ];

@@ -4,10 +4,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import classNames from "classnames";
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import { useSnackbar } from "notistack";
 
 import { AddNoteProps } from "./add-note.types";
 import { notesCategories } from "../notes.constants";
-import { initialValues } from "./add-note.constants";
+import { initialValues, inputProps, sx } from "./add-note.constants";
 import { FormTextField } from "components";
 import { refreshNotes, RootState } from "store";
 import { NoteModels } from "models";
@@ -19,6 +20,7 @@ export const AddNote: React.FC<AddNoteProps> = ({ handleCloseModal }) => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state: RootState) => state.auth);
+  const { enqueueSnackbar } = useSnackbar();
 
   const [category, setCategory] = useState(notesCategories[0]);
 
@@ -35,9 +37,10 @@ export const AddNote: React.FC<AddNoteProps> = ({ handleCloseModal }) => {
       try {
         await createNote(data);
         dispatch(refreshNotes());
+        enqueueSnackbar("Note added successfully", { variant: "success" });
         handleCloseModal();
       } catch (error) {
-        // TODO add snackbar
+        enqueueSnackbar("error", { variant: "error" });
         // eslint-disable-next-line no-console
         console.log(error);
       }
@@ -71,13 +74,22 @@ export const AddNote: React.FC<AddNoteProps> = ({ handleCloseModal }) => {
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form className={styles.fieldsWrapper} style={{ backgroundColor: `${category.color}` }}>
               <div className={styles.titleWrapper}>
-                <FormTextField name="title" placeholder="Your note title" label="Title" />
+                <FormTextField placeholder="Title" name="title" sx={sx} inputProps={inputProps.title} />
               </div>
               <div className={styles.descriptionWrapper}>
-                <FormTextField name="content" placeholder="Add description to your note" label="Description" />
+                <FormTextField
+                  name="content"
+                  placeholder="Content"
+                  multiline
+                  rows="15"
+                  inputProps={inputProps.content}
+                  sx={sx}
+                />
               </div>
 
-              <Button type="submit">add</Button>
+              <Button type="submit" className={styles.submitButton}>
+                add
+              </Button>
             </Form>
           </Formik>
         </div>
