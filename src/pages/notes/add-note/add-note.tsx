@@ -35,6 +35,7 @@ export const AddNote: React.FC<AddNoteProps> = ({ handleCloseModal }) => {
       try {
         await createNote(data);
         dispatch(refreshNotes());
+        handleCloseModal();
       } catch (error) {
         // TODO add snackbar
         // eslint-disable-next-line no-console

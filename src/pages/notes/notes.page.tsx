@@ -6,7 +6,7 @@ import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import { useDidUpdate } from "@better-typed/react-lifecycle-hooks";
 
 import { RootState } from "store";
-import { Modal } from "components";
+import { Modal, Note } from "components";
 import { AddNote } from "./add-note/add-note";
 
 import styles from "./notes.module.scss";
@@ -39,7 +39,7 @@ export const NotesPage = () => {
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-          <Typography>NOTES</Typography>
+          <Typography className={styles.title}>NOTES</Typography>
           <div className={styles.panel}>
             <IconButton>
               <PriorityHighIcon className={styles.icon} />
@@ -50,11 +50,11 @@ export const NotesPage = () => {
           </div>
         </div>
 
-        {notes.map((note) => (
-          <div className={styles.note} key={note.title}>
-            <p>{note.title}</p>
-          </div>
-        ))}
+        <div className={styles.notesWrapper}>
+          {notes.map((note) => (
+            <Note key={note.id} note={note} />
+          ))}
+        </div>
       </div>
       <Modal open={isModalOpen}>{modalComponent()}</Modal>
     </>

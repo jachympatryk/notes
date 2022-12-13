@@ -6,4 +6,5 @@ export type NoteModels = {
   userId: string;
   category: CategoryData;
   important: boolean;
+  id?: string;
 };

@@ -1,4 +1,4 @@
-import { doc, getDocs, setDoc, query, where } from "firebase/firestore";
+import { doc, getDocs, setDoc, query, where, deleteDoc } from "firebase/firestore";
 
 import { firestoreCollections, getCollectionRef } from "config";
 import { NoteModels } from "models";
@@ -15,4 +15,11 @@ export const createNote = (data: NoteModels) => {
   const noteDocument = doc(noteRef);
 
   return setDoc(noteDocument, data);
+};
+
+export const deleteNote = (id: string) => {
+  const notesRef = getCollectionRef<NoteModels>(firestoreCollections.notes);
+  const noteDocument = doc(notesRef, id);
+
+  return deleteDoc(noteDocument);
 };
