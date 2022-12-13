@@ -1,0 +1,55 @@
+.container {
+  position: fixed;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 50px;
+  border-radius: 16px;
+  background-color: #ff6a00;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border: 3px solid #fff;
+  -webkit-box-shadow: 8px 8px 21px -17px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 21px -17px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 21px -17px rgba(66, 68, 90, 1);
+  z-index: 9999999999999;
+}
+
+.iconButton {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.profilePicture {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+}
+
+.link {
+  color: #fff !important;
+  font-weight: 800 !important;
+}
+
+.name {
+  color: #fff !important;
+}
+
+.theme {
+
+}

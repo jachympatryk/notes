@@ -1,17 +1,26 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDidUpdate } from "@better-typed/react-lifecycle-hooks";
 
 import { Page } from "components";
 import { RouteConfig } from "types";
-import { LOGIN_PAGE } from "constants/routes.constants";
+import { RootState } from "store";
+import { LANDING_PAGE } from "constants/routes.constants";
 
-export const PageRoute: React.FC<RouteConfig> = ({ component: Component, showNavigation, auth }) => {
-  const isAuthenticated = true;
+export const PageRoute: React.FC<RouteConfig> = ({ component: Component, auth }) => {
+  const navigate = useNavigate();
 
-  if (auth && !isAuthenticated) return <Navigate to={LOGIN_PAGE.path} />;
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  const isAuthenticated = Boolean(user);
+
+  useDidUpdate(() => {
+    if (auth && !isAuthenticated) navigate(LANDING_PAGE.path);
+  }, [auth]);
 
   return (
-    <Page showNavigation={showNavigation}>
+    <Page>
       <Component />
     </Page>
   );
