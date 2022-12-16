@@ -32,6 +32,7 @@ export const AddNote: React.FC<AddNoteProps> = ({ handleCloseModal }) => {
         content,
         category: category.category,
         important: false,
+        createdAt: new Date().toISOString(),
       };
 
       try {

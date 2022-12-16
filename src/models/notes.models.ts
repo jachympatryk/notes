@@ -7,4 +7,5 @@ export type NoteModels = {
   category: CategoryData;
   important: boolean;
   id?: string;
+  createdAt: string;
 };

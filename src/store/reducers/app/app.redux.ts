@@ -19,7 +19,7 @@ const app = createSlice({
   initialState,
   reducers: {
     setNotes: (state, action: PayloadAction<NoteModels[]>) => {
-      state.notes = action.payload;
+      state.notes = action.payload.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     },
     refreshNotes: (state) => {
       state.notesRefresher += 1;
